@@ -1,0 +1,3 @@
+[submodule "PixappConfiguration"]
+	path = PixappConfiguration
+	url = https://github.com/Athul-Krishna/PixappConfiguration.git
