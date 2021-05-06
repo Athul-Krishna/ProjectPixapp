@@ -1,21 +1,14 @@
-package com.athul.pixapp.api.users.shared;
+package com.athul.pixapp.api.users.ui.models;
 
-import com.athul.pixapp.api.users.ui.models.AlbumResponseModel;
-
-import java.io.Serializable;
 import java.util.List;
 
-public class UserDto implements Serializable {
-
-    private static final long serialVersionUID = -4006325048135453975L;
+public class UserResponseModel {
 
     private String firstName;
     private String lastName;
-    private String password;
     private String email;
     private String userId;
-    private String encryptedPassword;
-    List<AlbumResponseModel> albums;
+    private List<AlbumResponseModel> albums;
 
     public String getFirstName() {
         return firstName;
@@ -33,14 +26,6 @@ public class UserDto implements Serializable {
         this.lastName = lastName;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -55,14 +40,6 @@ public class UserDto implements Serializable {
 
     public void setUserId(String userId) {
         this.userId = userId;
-    }
-
-    public String getEncryptedPassword() {
-        return encryptedPassword;
-    }
-
-    public void setEncryptedPassword(String encryptedPassword) {
-        this.encryptedPassword = encryptedPassword;
     }
 
     public List<AlbumResponseModel> getAlbums() {

@@ -4,6 +4,7 @@ import com.athul.pixapp.api.users.services.UsersService;
 import com.athul.pixapp.api.users.shared.UserDto;
 import com.athul.pixapp.api.users.ui.models.CreateUserRequestModel;
 import com.athul.pixapp.api.users.ui.models.CreateUserResponseModel;
+import com.athul.pixapp.api.users.ui.models.UserResponseModel;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,13 @@ public class UsersController {
     @GetMapping("/status")
     public String status() {
         return "Working on port " + env.getProperty("local.server.port") + ", with token " + env.getProperty("token.secret");
+    }
+
+    @GetMapping(value = "/{userId}", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+    public ResponseEntity<UserResponseModel> getUser(@PathVariable String userId) {
+        UserDto userDto = usersService.getUserByUserId(userId);
+        UserResponseModel returnValue = new ModelMapper().map(userDto, UserResponseModel.class);
+        return ResponseEntity.status(HttpStatus.OK).body(returnValue);
     }
 
     @PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE },
