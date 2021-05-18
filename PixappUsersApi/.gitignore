@@ -33,6 +33,5 @@ build/
 .vscode/
 
 ### Properties ###
-/src/main/resources/application.properties
-/src/main/resources/bootstrap.properties
+/src/main/resources/*.properties
 users-ws.log*

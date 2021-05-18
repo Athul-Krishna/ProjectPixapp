@@ -12,6 +12,8 @@ import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -31,6 +33,8 @@ public class UsersController {
         return "Working on port " + env.getProperty("local.server.port") + ", with token " + env.getProperty("token.secret");
     }
 
+    //    @PreAuthorize("principal == #userId")
+    @PostAuthorize("principal == returnObject.body.userId")
     @GetMapping(value = "/{userId}", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
     public ResponseEntity<UserResponseModel> getUser(@PathVariable String userId) {
         UserDto userDto = usersService.getUserByUserId(userId);

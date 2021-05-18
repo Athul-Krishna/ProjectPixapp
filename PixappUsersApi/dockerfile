@@ -1,0 +1,4 @@
+FROM adoptopenjdk/openjdk11:jre-11.0.6_10-alpine
+VOLUME /tmp
+COPY target/PixappUsersApi-0.0.1-SNAPSHOT.jar PixappUsersApi.jar
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","PixappUsersApi.jar"]
